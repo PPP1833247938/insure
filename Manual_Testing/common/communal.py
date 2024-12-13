@@ -317,6 +317,7 @@ def SeveralYears_tp(day=0, year=1):
 
 if __name__ == '__main__':
     for i in range(10):
-        print(Nickname())  # 随机生成姓名
-        print(newIdNum(1998, 1, 7, "男"))  # 随机生成身份证
+        print(Nickname())  # 生成姓名
+        print(newIdNum(1998, 1, 7, "男"))  # 生成身份证
+        print(CreditCode())  # 生成统一社会信用代码
     # print(Nickname(),Time(), Tomorrow(), SeveralYears())
