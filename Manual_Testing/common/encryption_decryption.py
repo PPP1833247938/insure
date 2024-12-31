@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-import base64
+import base64, json
 from Crypto.Cipher import AES
 from Manual_Testing.common.operation_config import Config
 from Manual_Testing.Environment import Environment
+from Manual_Testing.common import communal as co
 
 config = Config("config.ini")
 
@@ -49,11 +50,11 @@ class AES_DES:
             if task == 0 or task == "0":
                 eg = AesDensity(self.key)
                 res = eg.decrypt(text)
-                return "解密res:" + res
+                return "解密结果:\n" + co.JsonFormatting(json.loads(res))
             elif task == 1 or task == "1":
                 eg = EncryptDate(self.key)
                 res = eg.encrypt(text)
-                return "加密res:" + res
+                return "加密结果:\n" + res
             else:
                 return f"注意task:0-解密,1-加密!"
         except:
