@@ -69,8 +69,6 @@ class Logger(object):
 
 
 # sys.stdout = Logger()
-# sys.stderr = Logger()
-
 # print("Hello World")
 
 
@@ -282,6 +280,8 @@ def monthtime():
         days=1)).strftime('%Y%m%d235959')
     return month
 
+
+########################################################################################################################
 
 def Issue_tp(day=-2):
     """(太平_碎屏责任险)出单时间"""
