@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -21,6 +21,6 @@ class Abnormal:
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Abnormal().Abnormal()
-    print(f'[{co.Execution_Time()}]\n{Res}')
+    print(f'[{CO.Execution_Time()}]\n{Res}')

@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -22,7 +22,7 @@ class Claim_application:
         body = {
             "Data": {
                 "PolicyNo": "PI07306240424948884531",  # 保单号
-                "ReportOrderNo": co.RandomStr().create(),  # 报案订单号 (接口幂等字段)
+                "ReportOrderNo": CO.RandomStr().create(),  # 报案订单号 (接口幂等字段)
                 "ReporterName": "彦祖",  # 报案人姓名
                 "ReporterPhone": "13410506136",  # 报案人联系电话
                 "ReportDate": "20240116120000",  # 报案时间
@@ -40,15 +40,15 @@ class Claim_application:
                 "Reserve1": "CN097013"  # 保留字段1（网点编码）
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0044",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Claim_application().Claim_application()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

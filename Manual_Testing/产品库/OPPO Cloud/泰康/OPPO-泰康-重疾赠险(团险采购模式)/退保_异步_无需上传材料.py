@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 """
@@ -26,22 +26,22 @@ class Synchronous_surrender:
         body = {
             "Data": {
                 "PolicyRef": "6H2405DA3A31S86",  # 保单号
-                "CancelDate": co.Time(),  # 退保申请时间
+                "CancelDate": CO.Time(),  # 退保申请时间
                 "RefundPremium": "0.00",  # 退保金额（不一定等于实际退费金额）
                 "Currency": "CNY",  # 币种
                 "Type": "NORMAL",  # 退保类型： 正常退保 - NORMAL ，协商退保 - NEGOTIATE
                 "ReasonRemark": "测试单,退保",  # 退保原因
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0027",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Synchronous_surrender().Synchronous_surrender()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

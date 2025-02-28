@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 """
@@ -27,7 +27,7 @@ class SJX_Underwriting:
         body = {
             "Data": {
                 "Policy": {  # 保单信息
-                    "AgencyPolicyRef": co.RandomStr().create(),  # 第三方订单号
+                    "AgencyPolicyRef": CO.RandomStr().create(),  # 第三方订单号
                     "PlanCode": "TP2022072802",  # 计划代码   (升级款:TP2022072802)
                     "IssueDate": "20240317235959",  # 出单时间      (此产品测试环境可倒签)
                     "EffectiveDate": "20240317235959",  # 生效时间    ,(该产品出单即生效,T+0)
@@ -95,15 +95,15 @@ class SJX_Underwriting:
                 # ]
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0006",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = SJX_Underwriting().SJX_Underwriting()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

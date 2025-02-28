@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -22,7 +22,7 @@ class Callback:
                             <head>
                                 <productCode>0201797</productCode>
                                 <businessType>invoice</businessType>
-                                <transTime>{co.Execution_Time()}</transTime>
+                                <transTime>{CO.Execution_Time()}</transTime>
                                 <agencyCode>BBK</agencyCode>
                                 <orderNo>O162220240512163325972</orderNo>
                             </head>
@@ -33,7 +33,7 @@ class Callback:
                         </request>
                     </document>
                """
-        print(f'[{co.Execution_Time()}]-Request:\n{body}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{body}')
         return SendMethod.post_datax(url=request_url, data=body)
 
 
@@ -41,4 +41,4 @@ class Callback:
 """请求成功后,查看日志是否有回调推送给OPPO"""
 if __name__ == "__main__":
     Res = Callback().Callback()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

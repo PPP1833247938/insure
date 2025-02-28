@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -29,15 +29,15 @@ class Synchronize_logout:
                 "ReasonRemark": "测试单,注销",  # 注销原因
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0015",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Synchronize_logout().Synchronize_logout()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -23,7 +23,7 @@ class Renew_insurance:
             "Data": {
                 "Policy": {
                     "OriginalPolicyRef": "21010000H27230001509",  # 原保单号
-                    "AgencyPolicyRef": co.RandomStr().create(),  # 第三方订单号(不能与原订单号一致)
+                    "AgencyPolicyRef": CO.RandomStr().create(),  # 第三方订单号(不能与原订单号一致)
                     "PlanCode": "HT2022060802",  # 计划代码
                     "IssueDate": "20241117000000",  # 出单时间
                     "EffectiveDate": "20241118000000",  # 生效时间
@@ -74,7 +74,7 @@ class Renew_insurance:
                         "ProductBrand": "01",  # 产品品牌：01(OPPO) 04(OnePlus) 05(realme)
                         "ProductCategory": "01",  # 产品分类：01(手机)
                         "ProductModel": "Reno4 5G",  # 产品型号
-                        "ProductSerialNo": co.RandomStr().create(),  # 产品序列号
+                        "ProductSerialNo": CO.RandomStr().create(),  # 产品序列号
                         "ActiveDate": "20230407000000",  # 激活日期 碎屏险必传
                         "ProductPrice": "265",  # 产品价格
                         "PurchaseChannel": None,  # 购买渠道(预留字段)
@@ -91,15 +91,15 @@ class Renew_insurance:
                 ]
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0032",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Renew_insurance().Renew_insurance()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

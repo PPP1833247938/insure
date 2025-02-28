@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 """
@@ -28,11 +28,11 @@ class Renew_insurance:
             "Data": {
                 "Policy": {
                     "OriginalPolicyRef": "PWCB20234403Q000L00012",  # 原保单号
-                    "AgencyPolicyRef": co.RandomStr().create(),  # 第三方订单号
+                    "AgencyPolicyRef": CO.RandomStr().create(),  # 第三方订单号
                     "PlanCode": "RB2022082502",  # 续保计划码
-                    "IssueDate": co.Time(),  # 出单时间      (注:不可倒签)
-                    "EffectiveDate": co.Tomorrow(),  # 生效时间
-                    "ExpireDate": co.SeveralYears(),  # 失效时间
+                    "IssueDate": CO.Time(),  # 出单时间      (注:不可倒签)
+                    "EffectiveDate": CO.Tomorrow(),  # 生效时间
+                    "ExpireDate": CO.SeveralYears(),  # 失效时间
                     "GroupSize": "1",  # 被保人个数
                     "Currency": "CNY",  # 币种
                     "PaymentType": "2",  # 缴费方式：1-年缴2-月缴3-趸缴4-免缴
@@ -77,15 +77,15 @@ class Renew_insurance:
                 ]
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0032",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Renew_insurance().Renew_insurance()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

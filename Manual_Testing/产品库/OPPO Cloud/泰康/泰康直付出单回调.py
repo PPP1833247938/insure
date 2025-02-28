@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -46,11 +46,11 @@ class Callback:
             "QFwEkDrnjgC6dfy7HXc6BxGi7tQCTEWEXtKdSOljjzP46DiXZvj0Zpuj+5rpbRfNumlEakWMaFcBd0GS37ZkujFekn0CZIPo+HzgKH41R"
             "njaR/hFwc9yVEZWjNuQB9OJ9y99IveGtGL/zQZmUykh3D7gBG9ahjXscE9gtzhsU4HMBV7yWX/e2eP5gnZ2fNo6cfTRBmPlGqVwsePF06"
             "58oDiXOWuJVtaxEyt/MvChw8puqDizJTZSDeo5+zaoG9dEdNPoJ08KXE2jN+Q==")
-        print(f'[{co.Execution_Time()}]-Request:\n{body}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{body}')
         return SendMethod.post_data(url=request_url, data=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""
 if __name__ == "__main__":
     Res = Callback().Callback()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

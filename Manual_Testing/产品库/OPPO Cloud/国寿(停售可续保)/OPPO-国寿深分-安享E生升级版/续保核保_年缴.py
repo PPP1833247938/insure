@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -23,7 +23,7 @@ class Renew_insurance:
             "Data": {
                 "Policy": {
                     "OriginalPolicyRef": "6688032023440380026062",  # 原保单号
-                    "AgencyPolicyRef": co.RandomStr().create(),  # 第三方订单号
+                    "AgencyPolicyRef": CO.RandomStr().create(),  # 第三方订单号
                     "PlanCode": "CLICL2022052001",  # 续保计划码
                     "IssueDate": "20241201000000",  # 出单时间
                     "EffectiveDate": "20241202000000",  # 生效时间
@@ -73,15 +73,15 @@ class Renew_insurance:
                 # ]
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0032",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Renew_insurance().Renew_insurance()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

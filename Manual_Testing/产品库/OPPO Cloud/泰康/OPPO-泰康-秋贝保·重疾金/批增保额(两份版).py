@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -27,23 +27,23 @@ class Increase_coverage:
                         "CorrectPremium": "0",  # 批增保费,赠险传0
                         "OriginalAmount": "7110.00",  # 原有保额
                         "CorrectAmount": "1000",  # 批增保额
-                        "CorrectNo": co.RandomStr().create(),  # 批单申请号,保证唯一
-                        "CorrectEffectiveDate": co.Tomorrow()  # 批单生效时间，T+1零点生效
+                        "CorrectNo": CO.RandomStr().create(),  # 批单申请号,保证唯一
+                        "CorrectEffectiveDate": CO.Tomorrow()  # 批单生效时间，T+1零点生效
                     },
                     "PlanCode": "S2022061604",  # 计划代码
                     "PolicyRef": "H231226004392820176381"  # 保单号
                 }
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0028",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Increase_coverage().Increase_coverage()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')

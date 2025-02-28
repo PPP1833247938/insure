@@ -3,7 +3,7 @@ from Manual_Testing.common.operation_config import Config
 import json, sys
 from Manual_Testing.common.send_method import SendMethod
 from Manual_Testing.Environment import Environment
-from Manual_Testing.common import communal as co
+from Manual_Testing.common import communal as CO
 
 config = Config("config.ini")
 
@@ -23,7 +23,7 @@ class Renew_insurance:
             "Data": {
                 "Policy": {
                     "OriginalPolicyRef": "10560006600504730325",  # 原保单号
-                    "AgencyPolicyRef": co.RandomStr().create(),  # 第三方订单号
+                    "AgencyPolicyRef": CO.RandomStr().create(),  # 第三方订单号
                     "PlanCode": "1019A05G02",  # 续保计划码
                     "IssueDate": "20241223000000",  # 出单时间
                     "EffectiveDate": "20241224000000",  # 生效时间
@@ -42,7 +42,7 @@ class Renew_insurance:
                     "PHIdType": "01",
                     # 证件类型01居民身份证,02户口簿,03护照,04军官证,05驾驶执照,06港澳返乡证,07台胞证,08出生证,09统一社会信用代码,10纳税人识别号,11其他) 特殊说明下必传
                     "PHIdNumber": "511421199801074663",  # 证件号
-                    "PHBirthDate": co.Birthday("511421199801074663"),  # 出生日期
+                    "PHBirthDate": CO.Birthday("511421199801074663"),  # 出生日期
                     "PHTelephone": "13479245685",  # 手机号
                     "SocialSecurityFlag": "0"  # 有无社保 (0无1有)
                 },
@@ -55,7 +55,7 @@ class Renew_insurance:
                         "IdType": "01",
                         # 证件类型证件类型01居民身份证,02户口簿,03护照,04军官证,05驾驶执照,06港澳返乡证,07台胞证,08出生证,09统一社会信用代码,10纳税人识别号,11其他) 特殊说明下必传
                         "IdNumber": "511421199801074663",  # 证件号
-                        "BirthDate": co.Birthday("511421199801074663"),  # 出生日期
+                        "BirthDate": CO.Birthday("511421199801074663"),  # 出生日期
                         "Mobile": "13479245685",  # 手机号投保类型为2非必传
                         "PolicyholderInsuredRelation": "01",
                         # 被保人与投保人关系(01本人,02配偶,03丈夫,04妻子,05儿子,06女儿,07儿女,08父母,09父亲,10母亲) 投保类型为2时不传
@@ -73,15 +73,15 @@ class Renew_insurance:
                 ]
             },
             "ChannelCode": self.ChannelCode,
-            "RequestID": co.RandomStr().create(),
+            "RequestID": CO.RandomStr().create(),
             "RequestType": "0032",
             "Version": "1.0.0"
         }
-        print(f'[{co.Execution_Time()}]-Request:\n{co.JsonFormatting(body)}')
+        print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
         return SendMethod.PostData_aes(key=self.key, url=request_url, data=body, headers=self.headers)
 
 
 if __name__ == "__main__":
-    sys.stdout = co.Logger()
+    sys.stdout = CO.Logger()
     Res = Renew_insurance().Renew_insurance()
-    print(f'[{co.Execution_Time()}]-Response:\n{Res}')
+    print(f'[{CO.Execution_Time()}]-Response:\n{Res}')
