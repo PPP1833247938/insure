@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import json, sys
-from Manual_Testing.common.send_method import SendMethod
+from Manual_Testing.common.send_method import PrePose, SendMethod
 from Manual_Testing.common import communal as CO
 
 
-class Paid_up(CO.PrePose):
+class Paid_up(PrePose):
     def Paid_up(self):
         url = "/issuingmc/channelapi/insure/renewalAll"
         request_url = self.host + url
