@@ -17,7 +17,7 @@ class Abnormal:
         url = "/hlcpTest/tk/mock/abnormal"
         request_url = self.host + url
         body = {}
-        return SendMethod.post_json(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 if __name__ == "__main__":

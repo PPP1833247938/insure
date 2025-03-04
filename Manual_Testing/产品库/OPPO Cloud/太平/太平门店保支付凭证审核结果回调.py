@@ -21,7 +21,7 @@ class Callback:
             "auditStatus": "PASSED"  # 审核状态:PASSED-通过,REJECT-驳回
         }
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_json(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""

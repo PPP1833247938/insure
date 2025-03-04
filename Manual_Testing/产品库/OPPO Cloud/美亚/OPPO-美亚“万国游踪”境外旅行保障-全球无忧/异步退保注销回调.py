@@ -31,7 +31,7 @@ class Callback:
                 '}]}'
                 '&AgencyUserId=10710&')
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_datax(url=request_url, data=body)
+        return SendMethod.Post_DataJson(url=request_url, data=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""

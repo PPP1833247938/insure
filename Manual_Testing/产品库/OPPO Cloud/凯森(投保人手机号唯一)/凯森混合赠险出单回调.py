@@ -25,7 +25,7 @@ class Callback:
             "inid": "15"  # 保司编码
         }
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_jsonx(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 """

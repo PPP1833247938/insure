@@ -87,7 +87,7 @@ class Callback:
             "sign": "6c1fa630777cd441e33a683403a980d9"
         }
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_json(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""

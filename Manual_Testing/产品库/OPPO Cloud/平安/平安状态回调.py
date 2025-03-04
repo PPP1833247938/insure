@@ -86,7 +86,7 @@ class Callback:
             "effectiveDate": "2023-12-22 00:00:00"
         }
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_json(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""

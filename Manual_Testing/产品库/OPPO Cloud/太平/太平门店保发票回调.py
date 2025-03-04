@@ -34,7 +34,7 @@ class Callback:
                     </document>
                """
         print(f'[{CO.Execution_Time()}]-Request:\n{body}')
-        return SendMethod.post_datax(url=request_url, data=body)
+        return SendMethod.Post_DataJson(url=request_url, data=body)
 
 
 """修改需要回调policyno保单号即可;仅电子发票需要回调"""

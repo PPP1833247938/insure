@@ -27,7 +27,7 @@ class Callback:
             "timestamp": "1709550359331"
         }
         print(f'[{CO.Execution_Time()}]-Request:\n{CO.JsonFormatting(body)}')
-        return SendMethod.post_json(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 """报案号:registNo

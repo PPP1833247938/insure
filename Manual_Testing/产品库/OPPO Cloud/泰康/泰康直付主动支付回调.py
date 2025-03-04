@@ -23,7 +23,7 @@ class Callback:
                 "Uim896B9IJQAUDe8DZ19m3fNGQb7qWatwr/qiWUuQnFK+/jmZvSfX09aNkucyg7PVu7kflSvM8nDphaHD70z3QPXIYv3d2OVF6iob"
                 "RiHbJ1XUlVKm7fSLLIrv0cbrCvV3PkZ9j0AS4tBtYlWQPgC7U0sy+ECLq4g5JB1+ZGsFfHO/Y ")
         print(f'[{CO.Execution_Time()}]-Request:\n{body}')
-        return SendMethod.post_data(url=request_url, data=body)
+        return SendMethod.Post_DataJson(url=request_url, data=body)
 
 
 """请求成功后,查看日志是否有回调推送给OPPO"""

@@ -17,7 +17,7 @@ class Mock_SurrenderTrial:
         url = "/hlcpTest/webservice/as/mock/Surrender_Trial/year"
         request_url = self.host + url
         body = {}
-        return SendMethod.post_jsonx(url=request_url, json=body)
+        return SendMethod.Post_DataJson(url=request_url, json=body)
 
 
 if __name__ == "__main__":
